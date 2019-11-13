@@ -13,15 +13,18 @@ sorted(lines,key=lambda tup: tup[1])
 
 indices = []
 curr_line = ''
+counter = 0
 for line_tup in lines:
     if curr_line==line_tup[1]:
         #do something
         indices.append(line_tup[0])
     else:
-        indices.append(-1)
+        if counter>0:
+            indices.append(-1)
         indices.append(line_tup[0])
         curr_line = line_tup[1]
         new_data.write('{}\n'.format(line_tup[1]))
+    counter += 1
 
 # write text
 write_count = 0
