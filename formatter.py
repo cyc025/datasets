@@ -2,12 +2,14 @@
 import sys 
 
 
-new_data = open('{}.sorted'.format(sys.argv[1]),'w')
-new_text = open('{}.sorted'.format(sys.argv[2]),'w')
+new_data = open('{}.test'.format(sys.argv[1]),'w')
+new_text = open('{}.test'.format(sys.argv[2]),'w')
 
 trg_text = [line.replace('\n','') for line in list(open(sys.argv[2],'r').readlines())]
 
 lines = [(index,line.replace('\n','')) for index,line in enumerate(list(open(sys.argv[1],'r').readlines()))]
+
+print( len(set(trg_text)) )
 
 sorted(lines,key=lambda tup: tup[1])
 
@@ -16,7 +18,6 @@ curr_line = ''
 counter = 0
 for line_tup in lines:
     if curr_line==line_tup[1]:
-        #do something
         indices.append(line_tup[0])
     else:
         if counter>0:
