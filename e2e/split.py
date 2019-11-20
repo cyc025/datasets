@@ -104,11 +104,15 @@ write_data(
     dataset=new_train_set
 )
 
+unique_attrs = [ attr[0] for attr in test_dev_set ]
+testset_attrs = random.sample(set(unique_attrs),630)
+
 testset = []
 devset = []
+
 test_indices = random.sample(list(range(len(test_dev_set))),630)
-for i,t in enumerate(test_dev_set):
-    if i in test_indices:
+for t in test_dev_set:
+    if t[0] in testset_attrs:
         testset.append(t)
     else:
         devset.append(t)
