@@ -11,7 +11,7 @@ lines = [(index,line.replace('\n','')) for index,line in enumerate(list(open(sys
 
 print( len(set(trg_text)) )
 
-sorted(lines,key=lambda tup: tup[1])
+lines = sorted(lines,key=lambda tup: tup[1])
 
 indices = []
 curr_line = ''
